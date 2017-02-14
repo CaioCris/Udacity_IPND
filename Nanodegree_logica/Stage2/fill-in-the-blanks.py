@@ -8,10 +8,10 @@ hard =  ("When you create a __1__, certain __2__s are automatically\ngenerated f
 parts_in_blank  = ["__1__", "__2__", "__3__", "__4__", "__5__", "__6__", "__7__", "__8__", "__9__", "__10__"]
 
 # Awnsers of each list
-awnser_very_easy = ["world", "Python", "print", "ok"]
-awnser_easy = [ "Programming", "loops", "statments", "python"]
-awnser_medium = ["function", "arguments", "None", "ok"]
-awnser_hard = ["class", "method", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok" ]
+answer_very_easy = ["world", "Python", "print", "ok"]
+answer_easy = [ "Programming", "loops", "statments", "python"]
+answer_medium = ["function", "arguments", "None", "ok"]
+answer_hard = ["class", "method", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok" ]
 
 #Functions
 #You can chose the level, and if the input is not value this will keep the while looping.
@@ -26,28 +26,26 @@ def chose_level(input):
         return hard
     else:
         return "unvalid"
-
-def awnser(input):
+#Afeter chose the level, you will get a array with the answer, to compare with what you input in the game
+def answer(input):
     if input == "very easy":
-        return awnser_very_easy 
+        return answer_very_easy 
     elif input == "easy":
-        return awnser_easy
+        return answer_easy
     elif input == "medium":
-        return awnser_medium
+        return answer_medium
     elif input == "hard":
-        return awnser_hard
+        return answer_hard
 
+#Get the right blanks spaces according the array called parts_in_blank
 def fill_blank(blank, parts_in_blank):
     for gap in parts_in_blank :
         if gap in blank:
             return gap
     return None
 
-def chances(chance, c):
-    if chance == c:
-        return "Try againa!"
-
-def play_game(level, awnser): 
+#Here is the game logic code
+def play_game(level, answer, parts_in_blank): 
     i = 0 
     c = 0
     replaced = []
@@ -55,19 +53,22 @@ def play_game(level, awnser):
     for blank in words:
         replacement = fill_blank(blank, parts_in_blank)
         if replacement != None:
-            user_input = input("Take you guess on" + replacement + ": ")
-            while user_input != awnser[i]:
-                user_input = input("Keep trying:" + replacement + ": ")
+            user_input = input("Take your guess " + replacement + ": ")
+            while user_input != answer[i]:
                 c += 1
-                if chance == c:
-                    return "Try again!"
+                print ("Not right yet, you still have ",chance-c," chances to try!\n")
+                if c == chance:
+                    return "You lost all your chances! C'mon mate, keep trying!"
+                print(level)
+                user_input = input("Keep trying mate:" + replacement + ": ")
             level = level.replace(replacement, user_input)
             i += 1
             print(level)
+            parts_in_blank.remove(replacement)
         else:
             replaced.append(blank)
     replaced = " ".join(replaced)
-    print ("Congratulations! You have completed the quiz.")
+    return "Congratulations! You have completed the quiz."
     
 
 print("Please select a game difficulty by typing it in!\n"
@@ -75,7 +76,7 @@ print("Please select a game difficulty by typing it in!\n"
 level = input()
 
 print ("How many chances do you need ?")
-chance = input()
+chance = int(input())
 print ("You have ",chance," chances!")
 
 if level == "very easy" or level == "easy" or level == "medium" or level == "hard":
@@ -88,6 +89,6 @@ else:
     print ("You've chosen",level,"!\n")    
     print (chose_level(level))
 
-print (play_game(chose_level(level), awnser(level)))
+print (play_game(chose_level(level), answer(level), parts_in_blank))
 
 
