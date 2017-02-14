@@ -28,7 +28,9 @@ def play_game(ml_string, parts_of_speech):
             replaced.append(word)
         else:
             replaced.append(word)
+            print (replaced)
     replaced = " ".join(replaced)
+    print(replaced)
     return replaced
     
 print (play_game(test_string1, parts_of_speech1))    

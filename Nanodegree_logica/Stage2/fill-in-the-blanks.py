@@ -8,10 +8,10 @@ hard =  ("When you create a __1__, certain __2__s are automatically\ngenerated f
 parts_in_blank  = ["__1__", "__2__", "__3__", "__4__", "__5__", "__6__", "__7__", "__8__", "__9__", "__10__"]
 
 # Awnsers of each list
-Awnser_very_easy = ["world", "Python", "print", "ok"]
-Awnser_easy = [ "Programming", "loops", "statments", "python"]
-Awnser_medium = ["function", "arguments", "None", "ok"]
-Awnser_hard = ["class", "method", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok" ]
+awnser_very_easy = ["world", "Python", "print", "ok"]
+awnser_easy = [ "Programming", "loops", "statments", "python"]
+awnser_medium = ["function", "arguments", "None", "ok"]
+awnser_hard = ["class", "method", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok" ]
 
 #Functions
 #You can chose the level, and if the input is not value this will keep the while looping.
@@ -27,6 +27,15 @@ def chose_level(input):
     else:
         return "unvalid"
 
+def awnser(input):
+    if input == "very easy":
+        return awnser_very_easy 
+    elif input == "easy":
+        return awnser_easy
+    elif input == "medium":
+        return awnser_medium
+    elif input == "hard":
+        return awnser_hard
 
 def fill_blank(blank, parts_in_blank):
     for gap in parts_in_blank :
@@ -34,29 +43,40 @@ def fill_blank(blank, parts_in_blank):
             return gap
     return None
 
-def play_game(level, parts_in_blank):  
+def chances(chance, c):
+    if chance == c:
+        return "Try againa!"
+
+def play_game(level, awnser): 
+    i = 0 
+    c = 0
     replaced = []
-    level = level.split()
-    for blank in level:
+    words = level.split()
+    for blank in words:
         replacement = fill_blank(blank, parts_in_blank)
         if replacement != None:
-            user_input = input("Take you guess on: " + replacement + " ")
-            print(blank)
-            for blank in level:
-                blank = blank.replace(replacement, user_input)
-                print(blank)
-                replaced.append(blank)
-                print(replaced)
-            
-            else:
-                replaced.append(blank)
+            user_input = input("Take you guess on" + replacement + ": ")
+            while user_input != awnser[i]:
+                user_input = input("Keep trying:" + replacement + ": ")
+                c += 1
+                if chance == c:
+                    return "Try again!"
+            level = level.replace(replacement, user_input)
+            i += 1
+            print(level)
+        else:
+            replaced.append(blank)
     replaced = " ".join(replaced)
-    return replaced
+    print ("Congratulations! You have completed the quiz.")
     
 
 print("Please select a game difficulty by typing it in!\n"
 "Possible choices include very easy, easy, medium, and hard.")
 level = input()
+
+print ("How many chances do you need ?")
+chance = input()
+print ("You have ",chance," chances!")
 
 if level == "very easy" or level == "easy" or level == "medium" or level == "hard":
     print ("You've chosen",level,"!\n")
@@ -68,57 +88,6 @@ else:
     print ("You've chosen",level,"!\n")    
     print (chose_level(level))
 
-print (play_game(chose_level(level), parts_in_blank))
+print (play_game(chose_level(level), awnser(level)))
 
-
-
-
-
-
-
-
-'''
-def awnser(input):
-    if input == "very easy":
-        return Awnser_very_easy 
-    elif input == "easy":
-        return Awnser_easy 
-    elif input == "medium":
-        return Awnser_medium 
-    elif input == "hard":
-        return Awnser_hard 
-
-print (awnser(level))
-
-def fill_blank(blank, parts_in_blank):
-    for gap in parts_in_blank :
-        if gap in blank:
-            return gap
-    return None
-
-def right(replacement, user_input):
-    for right in awnser(level):
-        print (right)
-        if user_input == right:
-            return ("correct")
-        else:
-            return "wrong"
-
-
-def play_game(level, parts_in_blank):  
-    replaced = []
-    level = level.split()
-    for blank in level:
-        replacement = fill_blank(blank, parts_in_blank)
-        if replacement != None:
-            user_input = input("Take you guess on: " + replacement + " ")
-            blank = blank.replace(replacement, user_input)
-            replaced.append(blank)
-        else:
-            replaced.append(blank)
-    replaced = " ".join(replaced)
-    return replaced
-    
-print (play_game(chose_level(level), parts_in_blank))
-'''
 
