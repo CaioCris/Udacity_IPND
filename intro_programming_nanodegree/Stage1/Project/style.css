@@ -1,0 +1,89 @@
+/* This is a CSS comment. Notice that CSS comments are
+enclosed by different characters than HTML comments. */
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {
+	margin: 0 auto;
+}
+a {
+	color: #0040FF;
+	text-decoration: none;
+}
+a:visited {
+	color: #FF0000;
+	text-decoration: none;
+}
+a:hover {
+	color: #800080;
+	text-decoration: none;
+}
+h1 {
+	background-color: #6495ED;
+	color: #808080;
+	font-size: 40px;
+	font-style: normal;
+	margin: 0 auto;
+}
+h3 {
+	margin-top: 5px;
+}
+
+/*change the space between the boxes*/
+
+.lesson {
+	background-color: #A9A9A9;
+	border-top: 2px solid black;
+	padding: 0px 10px 0px 10px;
+}
+.title {
+	text-align: center;
+	color: #4169E1;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-size: 30px;
+	margin: 10px 0px 10px 0px;
+}
+.sub_res {
+	font-family: Arial, Helvetica, sans-serif;
+	border-radius: 7.5px;
+	margin-top: 10px;
+	padding: 2px 5px 0px 5px;
+	/*here change the size of the boxes where the resume it is*/
+}
+.subtitle {
+	background-color: #DCDCDC;
+	border: 2px solid #C0C0C0;
+}
+.resume {
+	background-color: #ffeb3b;
+}
+.b {
+	font-weight: bold;
+}
+.it {
+	font-style: italic;
+}
+
+/*all the images CSS are below here*/
+
+#WWW {
+	max-width: 70%;
+	height: auto;
+}
+#tree {
+	max-width: 50%;
+	height: auto;
+	margin: auto;
+	display: block;
+	position: relative;
+	bottom: 5px;
+	border-radius: 2px;
+}
+#box {
+	max-width: 100%;
+	height: auto;
+}
