@@ -23,7 +23,6 @@ body {
 .app {
     display: -webkit-flex;
     display: flex;
-
 }
 
 .description {
